@@ -1,7 +1,12 @@
 const { XCoinAPI } = require("./XCoinAPI.js");
-const config = require("./config.js");
+const fs = require("fs");
 
-const { api_key, api_secret, krw_amount, krw_target_volume, order_currency, payment_currency } = config;
+const api_key = fs.readFileSync("./api_key.txt", "utf8");
+const api_secret = fs.readFileSync("./api_secret.txt", "utf8");
+const krw_amount = fs.readFileSync("./krw_amount.txt", "utf8");
+const krw_target_volume = fs.readFileSync("./krw_target_volume.txt", "utf8");
+const order_currency = fs.readFileSync("./order_currency.txt", "utf8");
+const payment_currency = fs.readFileSync("./payment_currency.txt", "utf8");
 
 const bithumb = new XCoinAPI(api_key, api_secret);
 
@@ -51,6 +56,7 @@ const cleanUp = async () => {
   await sell(param);
 };
 
+let startTime = new Date().getTime();
 async function startBithumbMarket() {
   const units = await calculateUnits();
 
@@ -82,9 +88,11 @@ async function startBithumbMarket() {
     }
   }
 
+  const endTime = new Date().getTime();
+
+  console.log("total time", (endTime - startTime) / 1000, "seconds");
   cleanUp();
 }
-
 module.exports = {
   startBithumbMarket,
   cleanUp,
