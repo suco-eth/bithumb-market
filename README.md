@@ -7,7 +7,7 @@
 
 1. Bithumb API KEY
 
-- API 키 발급 시 1. 매수주문 2. 매도주문 3. 회원지갑정보 권한 체크
+- API 키 발급 시 1. 매수주문 2. 매도주문 // optional, 3. 회원지갑정보 권한 체크
 - Connect Key, Secret Key
 - API Key 활성화
 - https://www.bithumb.com/react/api-support/management-api
