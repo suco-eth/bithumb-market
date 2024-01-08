@@ -41,7 +41,6 @@ const sell = async (params) => {
     await bithumb.xcoinApiCall("/trade/market_sell", params);
     btcSellVolume += Number(params.units);
   } catch (e) {
-    // retry
     await bithumb.xcoinApiCall("/trade/market_sell", params);
     btcSellVolume += Number(params.units);
   }

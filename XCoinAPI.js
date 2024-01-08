@@ -29,10 +29,11 @@ const XCoinAPI = class {
     };
     return new Promise(function (resolve, reject) {
       request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
+        if (response.statusCode == 200 && JSON.parse(body).status === "0000") {
           resolve(response);
         } else {
-          if (JSON.parse(body).status !== "5100") {
+          const jsonBody = JSON.parse(body);
+          if (jsonBody.status !== "5100" && jsonBody.message !== "주문량이 사용가능 BTC을 초과하였습니다.") {
             console.log("error", JSON.parse(body));
           }
           reject(error);
