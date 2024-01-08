@@ -32,6 +32,9 @@ const XCoinAPI = class {
         if (!error && response.statusCode == 200) {
           resolve(response);
         } else {
+          if (JSON.parse(body).status !== "5100") {
+            console.log("error", JSON.parse(body));
+          }
           reject(error);
         }
       });
