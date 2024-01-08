@@ -1,8 +1,8 @@
 const { XCoinAPI } = require("./XCoinAPI.js");
 const fs = require("fs");
 
-const api_key = fs.readFileSync("./api_key.txt", "utf8");
-const api_secret = fs.readFileSync("./api_secret.txt", "utf8");
+const api_key = fs.readFileSync("./api_key.txt", "utf8").trim();
+const api_secret = fs.readFileSync("./api_secret.txt", "utf8").trim();
 const krw_amount = fs.readFileSync("./krw_amount.txt", "utf8");
 const krw_target_volume = fs.readFileSync("./krw_target_volume.txt", "utf8");
 const order_currency = fs.readFileSync("./order_currency.txt", "utf8");
